@@ -31,6 +31,8 @@ Plugin 'ngemily/vim-vp4'
 
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'airblade/vim-rooter'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -148,3 +150,14 @@ let g:any_jump_max_search_results = 10
 
 " Prefered search engine: rg or ag
 let g:any_jump_search_prefered_engine = 'rg'
+
+" vim rooter settings
+let g:rooter_patterns = ['=src']
+
+let g:rooter_patterns = ['go.mod']
+
+" Set space-bar as leader
+let mapleader=" "
+
+" Open NERDTree by default
+autocmd VimEnter * NERDTree
