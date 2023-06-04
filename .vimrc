@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set number
+set relativenumber
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -125,14 +128,15 @@ let g:go_debug_mappings = {
       \ '(go-debug-print)': {'key': 'p'},
   \}
 
-map <leader>ds :GoDebugStart<cr>
-map <leader>dt :GoDebugStop<cr>
-map <leader>db :GoDebugBreakpoint<cr>
+"map <leader>ds :GoDebugStart<cr>
+"map <leader>dt :GoDebugStop<cr>
+"map <leader>db :GoDebugBreakpoint<cr>
 
-nnoremap <Leader>vlcm :cd $VLCM<CR>
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 " AnyJump settings
-
 " Show line numbers in search rusults
 let g:any_jump_list_numbers = 0
 
@@ -160,4 +164,7 @@ let g:rooter_patterns = ['go.mod']
 let mapleader=" "
 
 " Open NERDTree by default
-autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree | wincmd p
+
+" Ignore test files during anyjump
+let g:any_jump_ignored_files = ['*test.go']
